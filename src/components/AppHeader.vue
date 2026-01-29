@@ -1,29 +1,38 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const isMenuOpen = ref(false)
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
+
+const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/'
+
+const isActive = (path) => {
+  if (path === '/index.html') {
+    return currentPath === '/' || currentPath === '/index.html'
+  }
+  return currentPath.startsWith(path.replace('.html', ''))
+}
 </script>
 
 <template>
   <header class="header">
     <div class="header-container">
-      <RouterLink to="/index.html" class="logo">
+      <a href="/index.html" class="logo">
         <span class="logo-text">Linux.lt</span>
-      </RouterLink>
+      </a>
 
       <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">
         <span class="menu-icon" :class="{ open: isMenuOpen }"></span>
       </button>
 
       <nav class="nav" :class="{ open: isMenuOpen }">
-        <RouterLink to="/index.html" class="nav-link" @click="isMenuOpen = false">Pradžia</RouterLink>
-        <RouterLink to="/news.html" class="nav-link" @click="isMenuOpen = false">Naujienos</RouterLink>
-        <RouterLink to="/meetups.html" class="nav-link" @click="isMenuOpen = false">Renginiai</RouterLink>
-        <RouterLink to="/community.html" class="nav-link" @click="isMenuOpen = false">Bendruomenė</RouterLink>
+        <a href="/index.html" class="nav-link" :class="{ active: isActive('/index.html') }" @click="isMenuOpen = false">Pradžia</a>
+        <a href="/news.html" class="nav-link" :class="{ active: isActive('/news') }" @click="isMenuOpen = false">Naujienos</a>
+        <a href="/meetups.html" class="nav-link" :class="{ active: isActive('/meetups') }" @click="isMenuOpen = false">Renginiai</a>
+        <a href="/community.html" class="nav-link" :class="{ active: isActive('/community') }" @click="isMenuOpen = false">Bendruomenė</a>
       </nav>
     </div>
   </header>
@@ -85,11 +94,11 @@ const toggleMenu = () => {
 }
 
 .nav-link:hover::after,
-.nav-link.router-link-active::after {
+.nav-link.active::after {
   width: 100%;
 }
 
-.nav-link.router-link-active {
+.nav-link.active {
   color: var(--color-primary);
 }
 

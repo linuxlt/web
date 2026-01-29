@@ -42,16 +42,16 @@ const formatDate = (dateStr) => {
       <div class="news-meta">
         <time class="news-date">{{ formatDate(date) }}</time>
         <span v-if="author" class="news-author">
-          <RouterLink :to="`/author/${authorSlug}.html`">{{ author }}</RouterLink>
+          <a :href="`/author/${authorSlug}.html`">{{ author }}</a>
         </span>
       </div>
       <h3 class="news-title">
-        <RouterLink :to="`/news/${slug}.html`">{{ title }}</RouterLink>
+        <a :href="`/news/${slug}.html`">{{ title }}</a>
       </h3>
       <p class="news-excerpt">{{ excerpt }}</p>
-      <RouterLink :to="`/news/${slug}.html`" class="news-link">
+      <a :href="`/news/${slug}.html`" class="news-link">
         Skaityti daugiau &rarr;
-      </RouterLink>
+      </a>
     </div>
   </article>
 </template>

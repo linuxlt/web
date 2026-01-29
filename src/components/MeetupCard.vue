@@ -54,13 +54,13 @@ const formatDate = (dateStr) => {
     </div>
     <div class="meetup-content">
       <h3 class="meetup-title">
-        <RouterLink :to="`/meetups/${slug}.html`">{{ title }}</RouterLink>
+        <a :href="`/meetups/${slug}.html`">{{ title }}</a>
       </h3>
       <div class="meetup-meta">
         <span class="meetup-time">{{ formatDate(date) }}</span>
         <span class="meetup-location">{{ location }}</span>
         <span v-if="author" class="meetup-author">
-          <RouterLink :to="`/author/${authorSlug}.html`">{{ author }}</RouterLink>
+          <a :href="`/author/${authorSlug}.html`">{{ author }}</a>
         </span>
       </div>
       <p class="meetup-description">{{ description }}</p>

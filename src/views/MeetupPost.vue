@@ -58,18 +58,18 @@ watch(() => route.params.slug, loadMeetup)
     <div v-if="notFound" class="not-found">
       <h1>Susitikimas nerastas</h1>
       <p>Atsiprašome, tačiau ieškomas susitikimas neegzistuoja.</p>
-      <RouterLink to="/meetups.html" class="btn btn-primary">Grįžti į susitikimus</RouterLink>
+      <a href="/meetups.html" class="btn btn-primary">Grįžti į susitikimus</a>
     </div>
 
     <article v-else-if="meetup" class="post">
       <header class="post-header">
-        <RouterLink to="/meetups.html" class="back-link">&larr; Grįžti į susitikimus</RouterLink>
+        <a href="/meetups.html" class="back-link">&larr; Grįžti į susitikimus</a>
         <h1 class="post-title">{{ meetup.title }}</h1>
         <div class="post-meta">
           <time class="post-date">{{ formatDate(meetup.date) }}</time>
           <span v-if="meetup.location" class="post-location">{{ meetup.location }}</span>
           <span v-if="meetup.author" class="post-author">
-            <RouterLink :to="`/author/${meetup.authorSlug}.html`">{{ meetup.author }}</RouterLink>
+            <a :href="`/author/${meetup.authorSlug}.html`">{{ meetup.author }}</a>
           </span>
         </div>
       </header>
@@ -79,7 +79,7 @@ watch(() => route.params.slug, loadMeetup)
       </div>
 
       <footer class="post-footer">
-        <RouterLink to="/meetups.html" class="btn btn-outline">&larr; Visi susitikimai</RouterLink>
+        <a href="/meetups.html" class="btn btn-outline">&larr; Visi susitikimai</a>
       </footer>
     </article>
   </div>

@@ -13,9 +13,9 @@ const currentYear = new Date().getFullYear()
       <div class="footer-section">
         <h4 class="footer-subtitle">Nuorodos</h4>
         <nav class="footer-nav">
-          <RouterLink to="/news.html">Naujienos</RouterLink>
-          <RouterLink to="/meetups.html">Renginiai</RouterLink>
-          <RouterLink to="/community.html">Bendruomenė</RouterLink>
+          <a href="/news.html">Naujienos</a>
+          <a href="/meetups.html">Renginiai</a>
+          <a href="/community.html">Bendruomenė</a>
         </nav>
       </div>
 

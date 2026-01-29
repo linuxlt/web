@@ -56,17 +56,17 @@ watch(() => route.params.slug, loadPost)
     <div v-if="notFound" class="not-found">
       <h1>Straipsnis nerastas</h1>
       <p>Atsiprašome, tačiau ieškomas straipsnis neegzistuoja.</p>
-      <RouterLink to="/news.html" class="btn btn-primary">Grįžti į naujienas</RouterLink>
+      <a href="/news.html" class="btn btn-primary">Grįžti į naujienas</a>
     </div>
 
     <article v-else-if="post" class="post">
       <header class="post-header">
-        <RouterLink to="/news.html" class="back-link">&larr; Grįžti į naujienas</RouterLink>
+        <a href="/news.html" class="back-link">&larr; Grįžti į naujienas</a>
         <h1 class="post-title">{{ post.title }}</h1>
         <div class="post-meta">
           <time class="post-date">{{ formatDate(post.date) }}</time>
           <span v-if="post.author" class="post-author">
-            <RouterLink :to="`/author/${post.authorSlug}.html`">{{ post.author }}</RouterLink>
+            <a :href="`/author/${post.authorSlug}.html`">{{ post.author }}</a>
           </span>
         </div>
       </header>
@@ -76,7 +76,7 @@ watch(() => route.params.slug, loadPost)
         </div>
 
       <footer class="post-footer">
-        <RouterLink to="/news.html" class="btn btn-outline">&larr; Visos naujienos</RouterLink>
+        <a href="/news.html" class="btn btn-outline">&larr; Visos naujienos</a>
       </footer>
     </article>
   </div>

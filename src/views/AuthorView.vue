@@ -88,7 +88,7 @@ const authorName = computed(() => {
 
     <div v-if="!authorNews.length && !authorMeetups.length" class="not-found">
       <p>Šio autoriaus įrašų nerasta.</p>
-      <RouterLink to="/index.html" class="btn btn-primary">Grįžti į pradžią</RouterLink>
+      <a href="/index.html" class="btn btn-primary">Grįžti į pradžią</a>
     </div>
   </div>
 </template>

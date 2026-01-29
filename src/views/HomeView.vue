@@ -85,7 +85,7 @@ const communityLinks = [
           />
         </div>
         <div class="section-footer">
-          <RouterLink to="/news.html" class="btn btn-outline">Visos naujienos</RouterLink>
+          <a href="/news.html" class="btn btn-outline">Visos naujienos</a>
         </div>
       </section>
 
@@ -107,7 +107,7 @@ const communityLinks = [
         </div>
         <p v-else class="no-meetups">Šiuo metu nėra suplanuotų susitikimų. Sekite naujienas!</p>
         <div class="section-footer">
-          <RouterLink to="/meetups.html" class="btn btn-outline">Visi renginiai</RouterLink>
+          <a href="/meetups.html" class="btn btn-outline">Visi renginiai</a>
         </div>
       </section>
     </div>
