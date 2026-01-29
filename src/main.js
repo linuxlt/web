@@ -1,12 +1,7 @@
-import { ViteSSG } from 'vite-ssg'
+import { createApp } from 'vue'
 import App from './App.vue'
-import { routes } from './router'
 import './assets/main.css'
 
-export const createApp = ViteSSG(
-  App,
-  {
-    routes,
-    base: import.meta.env.BASE_URL
-  }
-)
+// For dev mode, we'll show the home page
+const app = createApp(App)
+app.mount('#app')

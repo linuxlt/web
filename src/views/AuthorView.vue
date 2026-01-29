@@ -1,15 +1,17 @@
 <script setup>
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
 import NewsCard from '../components/NewsCard.vue'
 import MeetupCard from '../components/MeetupCard.vue'
 
-const route = useRoute()
+const props = defineProps({
+  slug: {
+    type: String,
+    required: true
+  }
+})
 
 const newsModules = import.meta.glob('../content/news/*.md', { eager: true })
 const meetupModules = import.meta.glob('../content/meetups/*.md', { eager: true })
-
-const authorSlug = computed(() => route.params.slug)
 
 const authorNews = computed(() => {
   return Object.entries(newsModules)
@@ -23,7 +25,7 @@ const authorNews = computed(() => {
         slug
       }
     })
-    .filter(post => post.author && post.author.toLowerCase().replace(/\s+/g, '-') === authorSlug.value)
+    .filter(post => post.author && post.author.toLowerCase().replace(/\s+/g, '-') === props.slug)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
 })
 
@@ -40,13 +42,13 @@ const authorMeetups = computed(() => {
         author: module.author || module.frontmatter?.author || ''
       }
     })
-    .filter(meetup => meetup.author && meetup.author.toLowerCase().replace(/\s+/g, '-') === authorSlug.value)
+    .filter(meetup => meetup.author && meetup.author.toLowerCase().replace(/\s+/g, '-') === props.slug)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
 })
 
 const authorName = computed(() => {
   const firstPost = authorNews.value[0] || authorMeetups.value[0]
-  return firstPost?.author || authorSlug.value
+  return firstPost?.author || props.slug
 })
 </script>
 

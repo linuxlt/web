@@ -5,17 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite-ssg build && node scripts/generate-sitemap.js",
+    "build": "vite build && node scripts/generate-static.js && node scripts/generate-sitemap.js",
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue": "^3.4.21"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/server-renderer": "^3.4.21",
     "vite": "^5.2.0",
-    "unplugin-vue-markdown": "^0.26.2",
-    "vite-ssg": "^0.23.8"
+    "unplugin-vue-markdown": "^0.26.2"
   }
 }

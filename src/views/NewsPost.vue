@@ -1,9 +1,12 @@
 <script setup>
-import { ref, onMounted, watch, shallowRef } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { ref, onMounted, shallowRef } from 'vue'
 
-const route = useRoute()
-const router = useRouter()
+const props = defineProps({
+  slug: {
+    type: String,
+    required: true
+  }
+})
 
 const modules = import.meta.glob('../content/news/*.md', { eager: true })
 
@@ -26,10 +29,9 @@ const PostComponent = shallowRef(null)
 const notFound = ref(false)
 
 const loadPost = () => {
-  const slug = route.params.slug
-  if (posts[slug]) {
-    post.value = posts[slug]
-    PostComponent.value = posts[slug].component
+  if (posts[props.slug]) {
+    post.value = posts[props.slug]
+    PostComponent.value = posts[props.slug].component
     notFound.value = false
   } else {
     post.value = null
@@ -48,7 +50,6 @@ const formatDate = (dateStr) => {
 }
 
 onMounted(loadPost)
-watch(() => route.params.slug, loadPost)
 </script>
 
 <template>
@@ -72,8 +73,8 @@ watch(() => route.params.slug, loadPost)
       </header>
 
       <div class="post-content markdown-content">
-          <component :is="PostComponent" />
-        </div>
+        <component :is="PostComponent" />
+      </div>
 
       <footer class="post-footer">
         <a href="/news.html" class="btn btn-outline">&larr; Visos naujienos</a>

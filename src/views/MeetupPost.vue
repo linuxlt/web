@@ -1,8 +1,12 @@
 <script setup>
-import { ref, onMounted, watch, shallowRef } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, onMounted, shallowRef } from 'vue'
 
-const route = useRoute()
+const props = defineProps({
+  slug: {
+    type: String,
+    required: true
+  }
+})
 
 const modules = import.meta.glob('../content/meetups/*.md', { eager: true })
 
@@ -26,10 +30,9 @@ const MeetupComponent = shallowRef(null)
 const notFound = ref(false)
 
 const loadMeetup = () => {
-  const slug = route.params.slug
-  if (meetups[slug]) {
-    meetup.value = meetups[slug]
-    MeetupComponent.value = meetups[slug].component
+  if (meetups[props.slug]) {
+    meetup.value = meetups[props.slug]
+    MeetupComponent.value = meetups[props.slug].component
     notFound.value = false
   } else {
     meetup.value = null
@@ -50,7 +53,6 @@ const formatDate = (dateStr) => {
 }
 
 onMounted(loadMeetup)
-watch(() => route.params.slug, loadMeetup)
 </script>
 
 <template>
