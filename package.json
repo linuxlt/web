@@ -1,0 +1,21 @@
+{
+  "name": "linux-lt",
+  "version": "1.0.0",
+  "description": "Lithuanian Linux Community Website",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite-ssg build && node scripts/generate-sitemap.js",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.0",
+    "vite-plugin-vue-markdown": "^0.23.8",
+    "vite-ssg": "^0.23.8"
+  }
+}
