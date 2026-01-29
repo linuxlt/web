@@ -21,4 +21,4 @@ Mes esame tiesiog žmonės, kelias lietuviškas Linux bendruomenes apjungiantys 
 
 ## Prisijunkite!
 
-Rašykite straipsnius, užsukite į IRC kanalą, prisijunkite prie Matrix ar Signal grupių. Ši svetainė talpinama viešai GitHub'e: 
+Rašykite straipsnius, užsukite į IRC kanalą, prisijunkite prie Matrix ar Signal grupių. Ši svetainė talpinama viešai GitHub'e: [github.com/linuxlt/web](https://github.com/linuxlt/web)
