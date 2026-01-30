@@ -12,16 +12,10 @@ Jeigu tave sudomins, padėsime ir susidiegti, todėl atsinešk savo kompiuterį 
 
 Kodėl tau turėtų būti įdomus Linux ir atviras kodas?
 
-Trumpa versija: tavo kompiuteris veiks greičiau ir bus saugesnis.
-
-Ilgesnė versija:
-
 - Tavo kompiuteris veiks greičiau (net jei jis jau senas)
 - Būsi saugesnis nuo kenkėjiškų programų (malware, virusų)
 - Jei naudoji Windows 10, gali būti, kad į tavo kompiuterį negalėsi susidiegti Windows 11, o saugumo atnaujinimų Windows 10 nebegaus
 - Linux gali legaliai naudoti nemokamai
-
-Pilna versija: per Diegtuves. :)
 
 Jeigu esi patyręs Linux ir atviro kodo naudotojas, tavęs taip pat laukiame! Galėsi pasidalinti savo žiniomis ir su naujokais ir su kitais entuziastais.
 
