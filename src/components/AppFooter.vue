@@ -8,6 +8,10 @@ const currentYear = new Date().getFullYear()
       <div class="footer-section">
         <h3 class="footer-title">Linux.lt</h3>
         <p class="footer-text">Lietuvos Linux bendruomenės puslapis. Visos teisės saugomos įstatymo.</p>
+        <p></p>
+          <nav class="footer-nav">
+            <a href="https://github.com/linuxlt/web">GitHub</a>
+          </nav>
       </div>
 
       <div class="footer-section">
