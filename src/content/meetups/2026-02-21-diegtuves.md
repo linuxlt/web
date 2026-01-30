@@ -1,6 +1,6 @@
 ---
 title: Linux Diegtuvės
-date: 2026-02-21
+date: 2026-02-21 14:00
 location: NKKM
 author: Vaidas
 description: Linux diegimo renginys
