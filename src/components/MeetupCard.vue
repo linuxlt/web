@@ -34,6 +34,12 @@ defineProps({
   }
 })
 
+const monthsLt = ['Sau', 'Vas', 'Kov', 'Bal', 'Geg', 'Bir', 'Lie', 'Rgp', 'Rgs', 'Spa', 'Lap', 'Gru']
+
+const getShortMonth = (dateStr) => {
+  return monthsLt[new Date(dateStr).getMonth()]
+}
+
 const formatDate = (dateStr) => {
   const date = new Date(dateStr)
   return date.toLocaleDateString('lt-LT', {
@@ -50,7 +56,7 @@ const formatDate = (dateStr) => {
   <article class="meetup-card card" :class="{ 'is-past': isPast }">
     <div class="meetup-date-badge">
       <span class="meetup-day">{{ new Date(date).getDate() }}</span>
-      <span class="meetup-month">{{ new Date(date).toLocaleDateString('lt-LT', { month: 'short' }) }}</span>
+      <span class="meetup-month">{{ getShortMonth(date) }}</span>
     </div>
     <div class="meetup-content">
       <h3 class="meetup-title">
