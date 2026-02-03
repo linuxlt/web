@@ -26,6 +26,6 @@ Renginys vyks [NKKM](https://kompiuteriumokykla.lt/): Vilnius, Verkių g. 31C, L
 
 [Registruokis į renginį](https://docs.google.com/forms/d/e/1FAIpQLSdkSjWNESW4GsAB1QbTd355rz_Wgh2kh0S5WfAhJnjOZ_ffTg/viewform)
 
-Jeigu turi kokių nors klausimų, rašyk [vaidas@kascenas.lt](mailto:vaidas@kascenas.lt).
+Jeigu turi kokių nors klausimų, rašyk [vaidas@linux-lt.org](mailto:vaidas@linux-lt.org).
 
 Susitinkam Diegtuvėse!
