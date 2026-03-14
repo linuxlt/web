@@ -71,7 +71,6 @@ function generateRss() {
   </item>`).join('\n')
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
-  <atom:link href="https://www.linux.lt/feed.xml" rel="self" type="application/rss+xml" />
 <rss version="2.0">
   <channel>
     <title>${escapeXml(SITE_TITLE)}</title>
