@@ -7,11 +7,16 @@ const currentYear = new Date().getFullYear()
     <div class="footer-container">
       <div class="footer-section">
         <h3 class="footer-title">Linux.lt</h3>
-        <p class="footer-text">Lietuvos Linux bendruomenės puslapis. Visos teisės saugomos įstatymo.</p>
-        <p></p>
           <nav class="footer-nav">
-            <a href="https://github.com/linuxlt/web">GitHub</a>
+            <div><p class="footer-text">Visos teisės saugomos įstatymo.</p></div>
+            <a href="https://github.com/linuxlt/web">GitHub</a> <a href="/feed.xml" class="rss-link">
+            <svg class="rss-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20 4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+            </svg>
+            RSS
+          </a>
           </nav>
+          
       </div>
 
       <div class="footer-section">
@@ -83,6 +88,23 @@ const currentYear = new Date().getFullYear()
 
 .footer-nav a:hover {
   color: var(--color-primary);
+}
+
+.rss-link {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.rss-link:hover {
+  color: #f26522 !important;
+}
+
+.rss-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
 }
 
 .footer-bottom {
