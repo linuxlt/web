@@ -24,6 +24,11 @@ const toggleMenu = () => {
         <RouterLink to="/community.html" class="nav-link" @click="isMenuOpen = false">Bendruomenė</RouterLink>
         <RouterLink to="/news.html" class="nav-link" @click="isMenuOpen = false">Naujienos</RouterLink>
         <RouterLink to="/meetups.html" class="nav-link" @click="isMenuOpen = false">Renginiai</RouterLink>
+        <a href="/feed.xml" class="nav-link rss-link" title="RSS prenumerata" @click="isMenuOpen = false">
+          <svg class="rss-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-label="RSS">
+            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20 4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+          </svg>
+        </a>
       </nav>
     </div>
   </header>
@@ -91,6 +96,26 @@ const toggleMenu = () => {
 
 .nav-link.router-link-active {
   color: var(--color-primary);
+}
+
+.rss-link {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-muted);
+}
+
+.rss-link:hover {
+  color: #f26522;
+}
+
+.rss-link::after {
+  display: none;
+}
+
+.rss-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 .menu-toggle {
