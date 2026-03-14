@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(__dirname, '..')
 
-const SITE_URL = 'https://linux.lt'
+const SITE_URL = 'https://www.linux.lt'
 const SITE_TITLE = 'Linux.lt'
 const SITE_DESCRIPTION = 'Lietuviška Linux bendruomenė – naujienos ir renginiai'
 const SITE_LANGUAGE = 'lt'
