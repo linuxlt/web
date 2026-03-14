@@ -21,9 +21,9 @@ const toggleMenu = () => {
 
       <nav class="nav" :class="{ open: isMenuOpen }">
         <RouterLink to="/index.html" class="nav-link" @click="isMenuOpen = false">Pradžia</RouterLink>
+        <RouterLink to="/community.html" class="nav-link" @click="isMenuOpen = false">Bendruomenė</RouterLink>
         <RouterLink to="/news.html" class="nav-link" @click="isMenuOpen = false">Naujienos</RouterLink>
         <RouterLink to="/meetups.html" class="nav-link" @click="isMenuOpen = false">Renginiai</RouterLink>
-        <RouterLink to="/community.html" class="nav-link" @click="isMenuOpen = false">Bendruomenė</RouterLink>
       </nav>
     </div>
   </header>
