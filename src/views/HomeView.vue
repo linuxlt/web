@@ -67,6 +67,26 @@ const communityLinks = [
 
 <template>
   <div class="home">
+    <!-- Community Links -->
+    <section class="section">
+      <h2 class="section-title">Sveiki atvykę į Linux bendruomenę Lietuvoje!</h2>
+      <div class="community-grid">
+        <a
+          v-for="link in communityLinks"
+          :key="link.title"
+          :href="link.url"
+          class="community-card"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="community-icon">{{ link.icon }}</div>
+          <h3 class="community-title">{{ link.title }}</h3>
+          <p class="community-description">{{ link.description }}</p>
+          <span class="community-link">{{ link.urlText }}</span>
+        </a>
+      </div>
+    </section>
+
     <!-- News and Meetups in two columns -->
     <div class="two-columns">
       <!-- Latest News -->
@@ -111,26 +131,6 @@ const communityLinks = [
         </div>
       </section>
     </div>
-
-    <!-- Community Links -->
-    <section class="section">
-      <h2 class="section-title">Bendruomenė:</h2>
-      <div class="community-grid">
-        <a
-          v-for="link in communityLinks"
-          :key="link.title"
-          :href="link.url"
-          class="community-card"
-          target="_blank"
-          rel="noopener"
-        >
-          <div class="community-icon">{{ link.icon }}</div>
-          <h3 class="community-title">{{ link.title }}</h3>
-          <p class="community-description">{{ link.description }}</p>
-          <span class="community-link">{{ link.urlText }}</span>
-        </a>
-      </div>
-    </section>
   </div>
 </template>
 
