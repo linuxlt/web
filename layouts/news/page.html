@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div class="news-post">
+  <article class="post">
+    <header class="post-header">
+      <a href="/news.html" class="back-link">&larr; Grįžti į naujienas</a>
+      <h1 class="post-title">{{ .Title }}</h1>
+      <div class="post-meta">
+        <time class="post-date">{{ partial "lt-date.html" (dict "date" .Date) }}</time>
+        {{- with .Params.author }}
+        <span class="post-author">{{ partial "author-link.html" . }}</span>
+        {{- end }}
+      </div>
+    </header>
+
+    <div class="post-content markdown-content">
+      <div class="markdown-body">
+        {{ .Content }}
+      </div>
+    </div>
+
+    <footer class="post-footer">
+      <a href="/news.html" class="btn btn-outline">&larr; Visos naujienos</a>
+    </footer>
+  </article>
+</div>
+{{ end }}

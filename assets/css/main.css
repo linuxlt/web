@@ -1,0 +1,891 @@
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fedora-inspired theme variables */
+:root {
+  --color-primary: #3c6eb4;
+  --color-primary-dark: #294172;
+  --color-background: #ffffff;
+  --color-background-alt: #f5f7fa;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+/*  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; */
+  --max-width: 1200px;
+  --header-height: 64px;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body {
+/*  font-family: var(--font-family);*/
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+ul, ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  color: white;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Section spacing */
+.section {
+  padding: 3rem 0;
+}
+
+.section-title {
+  margin-bottom: 2rem;
+}
+
+/* Card base */
+.card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Markdown content styles */
+.markdown-content {
+  max-width: 800px;
+}
+
+.markdown-content h1 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-content h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.markdown-content h3 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content pre {
+  background: var(--color-background-alt);
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.markdown-content code {
+  background: var(--color-background-alt);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.markdown-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid var(--color-primary);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: var(--color-text-muted);
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.25rem; }
+
+  .section {
+    padding: 2rem 0;
+  }
+}
+
+/* Used by main.js to toggle meetup cards/lists */
+[hidden] {
+  display: none !important;
+}
+
+/*
+ * Component styles (formerly Vue scoped styles).
+ * Each block is scoped by prefixing the component/page root class, which
+ * gives the same specificity as Vue's [data-v-*] attribute selectors.
+ */
+
+/* ---- App layout ---- */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app .main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ---- Header ---- */
+.header {
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+}
+
+.header .header-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header .logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.header .nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.header .nav-link {
+  color: var(--color-text);
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.header .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.2s ease;
+}
+
+.header .nav-link:hover::after,
+.header .nav-link.active::after {
+  width: 100%;
+}
+
+.header .nav-link.active {
+  color: var(--color-primary);
+}
+
+.header .rss-link {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-muted);
+}
+
+.header .rss-link:hover {
+  color: #f26522;
+}
+
+.header .rss-link::after {
+  display: none;
+}
+
+.header .rss-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.header .menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.header .menu-icon {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.header .menu-icon::before,
+.header .menu-icon::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+  transition: transform 0.2s ease;
+}
+
+.header .menu-icon::before {
+  top: -8px;
+}
+
+.header .menu-icon::after {
+  top: 8px;
+}
+
+.header .menu-icon.open {
+  background: transparent;
+}
+
+.header .menu-icon.open::before {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.header .menu-icon.open::after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .header .menu-toggle {
+    display: block;
+  }
+
+  .header .nav {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: var(--color-background);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0;
+    border-bottom: 1px solid var(--color-border);
+    display: none;
+  }
+
+  .header .nav.open {
+    display: flex;
+  }
+
+  .header .nav-link {
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header .nav-link:last-child {
+    border-bottom: none;
+  }
+}
+
+.github-corner {
+  z-index: 200;
+  position: relative;
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  20%, 60% {
+    transform: rotate(-25deg);
+  }
+  40%, 80% {
+    transform: rotate(10deg);
+  }
+}
+
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+}
+
+/* ---- Footer ---- */
+.footer {
+  background: var(--color-background-alt);
+  border-top: 1px solid var(--color-border);
+  margin-top: auto;
+}
+
+.footer .footer-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.footer .footer-title {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.footer .footer-subtitle {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer .footer-text {
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+.footer .footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer .footer-nav a {
+  color: var(--color-text-muted);
+}
+
+.footer .footer-nav a:hover {
+  color: var(--color-primary);
+}
+
+.footer .rss-link {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.footer .rss-link:hover {
+  color: #f26522 !important;
+}
+
+.footer .rss-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.footer .footer-bottom {
+  border-top: 1px solid var(--color-border);
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.footer .footer-bottom p {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+/* ---- Meetup card ---- */
+.meetup-card {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.meetup-card.is-past {
+  opacity: 0.7;
+}
+
+.meetup-card .meetup-date-badge {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.meetup-card.is-past .meetup-date-badge {
+  background: var(--color-text-muted);
+}
+
+.meetup-card .meetup-day {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.meetup-card .meetup-month {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.meetup-card .meetup-content {
+  flex: 1;
+}
+
+.meetup-card .meetup-title {
+  margin-bottom: 0.5rem;
+}
+
+.meetup-card .meetup-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.meetup-card .meetup-location::before {
+  content: '📍 ';
+}
+
+.meetup-card .meetup-author::before {
+  content: '✍️ ';
+}
+
+.meetup-card .meetup-description {
+  margin-bottom: 1rem;
+}
+
+.meetup-card .meetup-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.meetup-card .meetup-badge.upcoming {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.meetup-card .meetup-badge.past {
+  background: var(--color-background-alt);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 480px) {
+  .meetup-card {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .meetup-card .meetup-date-badge {
+    width: 100%;
+    height: auto;
+    padding: 0.75rem;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .meetup-card .meetup-day {
+    font-size: 1.25rem;
+  }
+}
+
+/* ---- News card ---- */
+.news-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card .news-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card .news-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.news-card .news-author::before {
+  content: '• ';
+}
+
+.news-card .news-title {
+  margin-bottom: 0.75rem;
+}
+
+.news-card .news-title a {
+  color: var(--color-text);
+}
+
+.news-card .news-title a:hover {
+  color: var(--color-primary);
+}
+
+.news-card .news-excerpt {
+  color: var(--color-text-muted);
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.news-card .news-link {
+  font-weight: 500;
+}
+
+/* ---- Shared page header (news, meetups, community, author pages) ---- */
+.news-view .page-header,
+.meetups-view .page-header,
+.community-view .page-header,
+.author-view .page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.news-view .page-header h1,
+.meetups-view .page-header h1,
+.community-view .page-header h1,
+.author-view .page-header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.news-view .page-description,
+.meetups-view .page-description,
+.community-view .page-description,
+.author-view .page-description {
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+/* ---- Home ---- */
+.home .two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.home .column {
+  display: flex;
+  flex-direction: column;
+}
+
+.home .news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.home .meetups-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.home .no-meetups {
+  color: var(--color-text-muted);
+  padding: 2rem;
+  text-align: center;
+  background: var(--color-background-alt);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .home .two-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home .community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.home .community-card {
+  display: block;
+  padding: 1.5rem;
+  background: var(--color-background-alt);
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home .community-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.home .community-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.home .community-title {
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.home .community-description {
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.home .community-link {
+  display: inline-block;
+  color: var(--color-primary);
+  font-family: monospace;
+  font-size: 0.875rem;
+  background: var(--color-background);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.home .section-footer {
+  text-align: center;
+}
+
+/* ---- Community page ---- */
+.community-view .community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.community-view .community-card {
+  display: block;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.community-view .community-card:hover {
+  transform: translateY(-4px);
+}
+
+.community-view .community-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.community-view .community-title {
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.community-view .community-description {
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.community-view .community-link {
+  display: inline-block;
+  color: var(--color-primary);
+  font-family: monospace;
+  font-size: 0.875rem;
+  background: var(--color-background-alt);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.community-view .links-list {
+  max-width: 800px;
+}
+
+.community-view .links-list li {
+  margin-bottom: 0.75rem;
+}
+
+/* ---- News list / author page lists ---- */
+.news-view .news-list,
+.author-view .news-list,
+.author-view .meetups-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ---- Meetups list ---- */
+.meetups-view .meetups-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.meetups-view .no-meetups {
+  color: var(--color-text-muted);
+  padding: 2rem;
+  text-align: center;
+  background: var(--color-background-alt);
+  border-radius: 8px;
+}
+
+/* ---- News / meetup post ---- */
+.news-post .post,
+.meetup-post .post {
+  max-width: 800px;
+}
+
+.news-post .post-header,
+.meetup-post .post-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.news-post .back-link,
+.meetup-post .back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.news-post .post-title,
+.meetup-post .post-title {
+  margin-bottom: 0.5rem;
+}
+
+.news-post .post-meta,
+.meetup-post .post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: var(--color-text-muted);
+}
+
+.meetup-post .post-location::before {
+  content: '📍 ';
+}
+
+.news-post .post-author::before,
+.meetup-post .post-author::before {
+  content: '✍️ ';
+}
+
+.news-post .post-content,
+.meetup-post .post-content {
+  margin-bottom: 3rem;
+}
+
+.news-post .post-footer,
+.meetup-post .post-footer {
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}

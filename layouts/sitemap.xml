@@ -1,0 +1,20 @@
+{{- printf "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
+{{- $base := strings.TrimSuffix "/" site.BaseURL }}
+{{- $today := now.Format "2006-01-02" }}
+{{- $paths := slice "/index.html" "/news.html" "/meetups.html" "/community.html" }}
+{{- $authors := slice }}
+{{- range slice "news" "meetups" }}
+  {{- range sort (where site.RegularPages "Section" .) "File.BaseFileName" }}
+    {{- $paths = $paths | append .RelPermalink }}
+    {{- with .Params.author }}{{ if not (in $authors (urlize .)) }}{{ $authors = $authors | append (urlize .) }}{{ end }}{{ end }}
+  {{- end }}
+{{- end }}
+{{- range $authors }}{{ $paths = $paths | append (printf "/author/%s.html" .) }}{{ end }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{{- range $paths }}
+  <url>
+    <loc>{{ $base }}{{ . }}</loc>
+    <lastmod>{{ $today }}</lastmod>
+  </url>
+{{- end }}
+</urlset>

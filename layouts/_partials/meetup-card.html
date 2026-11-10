@@ -1,0 +1,22 @@
+{{- $p := .page -}}
+{{- $monthsShort := slice "Sau" "Vas" "Kov" "Bal" "Geg" "Bir" "Lie" "Rgp" "Rgs" "Spa" "Lap" "Gru" -}}
+<article class="meetup-card card{{ if .isPast }} is-past{{ end }}" data-date="{{ $p.Date.Format "2006-01-02T15:04:05Z07:00" }}"{{ if .hidden }} hidden{{ end }}>
+  <div class="meetup-date-badge">
+    <span class="meetup-day">{{ $p.Date.Day }}</span>
+    <span class="meetup-month">{{ index $monthsShort (sub (int ($p.Date.Format "1")) 1) }}</span>
+  </div>
+  <div class="meetup-content">
+    <h3 class="meetup-title">
+      <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+    </h3>
+    <div class="meetup-meta">
+      <span class="meetup-time">{{ partial "lt-date.html" (dict "date" $p.Date "time" true) }}</span>
+      <span class="meetup-location">{{ $p.Params.location }}</span>
+      {{- if .showAuthor }}{{ with $p.Params.author }}
+      <span class="meetup-author">{{ partial "author-link.html" . }}</span>
+      {{- end }}{{ end }}
+    </div>
+    <p class="meetup-description">{{ $p.Params.description }}</p>
+    {{ if .isPast }}<span class="meetup-badge past">Praėjęs</span>{{ else }}<span class="meetup-badge upcoming">Artėjantis</span>{{ end }}
+  </div>
+</article>

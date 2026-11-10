@@ -4,19 +4,23 @@ You are more than welcome to contribute to the web site https://www.linux.lt/. P
 
 ## Project structure
 
+The site is built with [Hugo](https://gohugo.io/) (v0.158 or newer).
+
 ```
-src/
-  content/
-    news/      ← news articles (Markdown)
-    meetups/   ← event posts (Markdown)
-  components/  ← Vue components
-  views/       ← page templates
-scripts/       ← build scripts (sitemap, RSS)
+content/
+  news/        ← news articles (Markdown)
+  meetups/     ← event posts (Markdown)
+data/          ← community links (IRC, Matrix, Signal)
+layouts/       ← page templates, RSS feed and sitemap
+  _partials/   ← header, footer, cards
+assets/        ← CSS and JavaScript
+static/        ← files copied as-is (robots.txt)
+hugo.toml      ← site configuration
 ```
 
 ## Adding a news article
 
-Create a file in `src/content/news/` named `YYYY-MM-title.md`:
+Create a file in `content/news/` named `YYYY-MM-title.md`:
 
 ```markdown
 ---
@@ -31,12 +35,12 @@ Article body goes here.
 
 ## Adding an event
 
-Create a file in `src/content/meetups/` named `YYYY-MM-DD-title.md`:
+Create a file in `content/meetups/` named `YYYY-MM-DD-title.md`:
 
 ```markdown
 ---
 title: Event name
-date: 2026-03-14 18:00
+date: 2026-03-14 18:00:00
 location: Venue, City
 author: Vaidas
 description: One sentence summary.
@@ -45,19 +49,20 @@ description: One sentence summary.
 Event details go here.
 ```
 
+The time must include seconds (`18:00:00`). Dates are in Lithuanian time (`Europe/Vilnius`).
+
 ## Local development
 
 ```bash
-npm install
-npm run dev
+hugo server
 ```
 
-Open `http://localhost:5173`.
+Open `http://localhost:1313`.
 
 ## Build
 
 ```bash
-npm run build
+hugo --minify
 ```
 
 Output goes to `dist/`. This also generates `sitemap.xml` and RSS `feed.xml`.

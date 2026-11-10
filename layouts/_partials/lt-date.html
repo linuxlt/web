@@ -1,0 +1,5 @@
+{{- /* Mirrors toLocaleDateString('lt-LT', { year, month: 'long', day[, hour, minute] }) */ -}}
+{{- $months := slice "sausio" "vasario" "kovo" "balandžio" "gegužės" "birželio" "liepos" "rugpjūčio" "rugsėjo" "spalio" "lapkričio" "gruodžio" -}}
+{{- $d := .date -}}
+{{- printf "%d m. %s %d d." $d.Year (index $months (sub (int ($d.Format "1")) 1)) $d.Day -}}
+{{- if .time }} {{ $d.Format "15:04" }}{{ end -}}
