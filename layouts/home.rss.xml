@@ -1,0 +1,25 @@
+{{- printf "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
+{{- $items := where (where site.RegularPages "Section" "in" (slice "news" "meetups")) "Date.Unix" ">" 0 }}
+<rss version="2.0">
+  <channel>
+    <title>{{ site.Params.feedTitle }}</title>
+    <link>{{ strings.TrimSuffix "/" site.BaseURL }}</link>
+    <description>{{ site.Params.feedDescription }}</description>
+    <language>{{ site.Language.Locale }}</language>
+    <lastBuildDate>{{ now.UTC.Format "Mon, 02 Jan 2006 15:04:05 GMT" }}</lastBuildDate>
+    {{- range $items.ByDate.Reverse }}
+  <item>
+    <title>{{ .Title }}</title>
+    <link>{{ .Permalink }}</link>
+    <pubDate>{{ .Date.UTC.Format "Mon, 02 Jan 2006 15:04:05 GMT" }}</pubDate>
+    {{- with .Params.author }}
+    <author>{{ . }}@linux-lt.org</author>
+    {{- end }}
+    {{- with .Params.description | default .Params.excerpt }}
+    <description>{{ . }}</description>
+    {{- end }}
+    <guid>{{ .Permalink }}</guid>
+  </item>
+    {{- end }}
+  </channel>
+</rss>

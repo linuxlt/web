@@ -1,0 +1,18 @@
+{{- $p := .page -}}
+<article class="news-card card">
+  <div class="news-card-content">
+    <div class="news-meta">
+      <time class="news-date">{{ partial "lt-date.html" (dict "date" $p.Date) }}</time>
+      {{- if .showAuthor }}{{ with $p.Params.author }}
+      <span class="news-author">{{ partial "author-link.html" . }}</span>
+      {{- end }}{{ end }}
+    </div>
+    <h3 class="news-title">
+      <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+    </h3>
+    <p class="news-excerpt">{{ $p.Params.excerpt }}</p>
+    <a href="{{ $p.RelPermalink }}" class="news-link">
+      Skaityti daugiau &rarr;
+    </a>
+  </div>
+</article>

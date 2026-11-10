@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="news-view">
+  <header class="page-header">
+    <h1>Naujienos</h1>
+    <p class="page-description">Straipsniai ir naujienos iš Linux pasaulio</p>
+  </header>
+
+  <div class="news-list">
+    {{- range .Pages.ByDate.Reverse }}
+    {{ partial "news-card.html" (dict "page" . "showAuthor" true) }}
+    {{- end }}
+  </div>
+</div>
+{{ end }}

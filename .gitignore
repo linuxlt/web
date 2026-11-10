@@ -1,2 +1,6 @@
-node_modules
 dist
+.hugo_build.lock
+resources/_gen/
+node_modules
+resources/
+.cache/

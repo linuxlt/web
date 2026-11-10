@@ -1,0 +1,33 @@
+{{ define "main" }}
+{{- $upcoming := slice }}
+{{- $past := slice }}
+{{- range .Pages.ByDate.Reverse }}
+  {{- if ge .Date.Unix now.Unix }}{{ $upcoming = $upcoming | append . }}{{ else }}{{ $past = $past | append . }}{{ end }}
+{{- end }}
+<div class="meetups-view">
+  <header class="page-header">
+    <h1>Renginiai</h1>
+    <p class="page-description">Bendruomenės renginiai ir susibūrimai</p>
+  </header>
+
+  <!-- Split is done at build time; main.js re-evaluates it in the browser. -->
+  <section class="section">
+    <h2 class="section-title">Artėjantys renginiai</h2>
+    <div class="meetups-list" data-meetups-upcoming{{ if not $upcoming }} hidden{{ end }}>
+      {{- range $upcoming }}
+      {{ partial "meetup-card.html" (dict "page" . "showAuthor" true) }}
+      {{- end }}
+    </div>
+    <p class="no-meetups" data-meetups-empty{{ if $upcoming }} hidden{{ end }}>Šiuo metu nėra suplanuotų susitikimų. Sekite naujienas!</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Praėję renginiai</h2>
+    <div class="meetups-list" data-meetups-past{{ if not $past }} hidden{{ end }}>
+      {{- range $past }}
+      {{ partial "meetup-card.html" (dict "page" . "showAuthor" true "isPast" true) }}
+      {{- end }}
+    </div>
+  </section>
+</div>
+{{ end }}

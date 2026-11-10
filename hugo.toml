@@ -1,0 +1,42 @@
+baseURL = "https://www.linux.lt/"
+locale = "lt"
+defaultContentLanguage = "lt"
+title = "Linux.lt - Lietuvos Linux bendruomenė"
+timeZone = "Europe/Vilnius"
+
+# Keep the old URL scheme: /news.html, /news/<slug>.html, /author/<slug>.html
+uglyURLs = true
+
+# Meetups are dated in the future
+buildFuture = true
+
+# Same output directory as the previous Vite build
+publishDir = "dist"
+
+# No /author.html index page
+disableKinds = ["taxonomy"]
+
+[taxonomies]
+  author = "author"
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html"]
+  page = ["html"]
+  term = ["html"]
+
+[outputFormats.rss]
+  baseName = "feed"
+
+[params]
+  description = "Linux.lt - Lietuvos Linux bendruomenė"
+  feedTitle = "Linux.lt"
+  feedDescription = "Lietuviška Linux bendruomenė – naujienos ir renginiai"
+
+[markup.goldmark.renderer]
+  # markdown-it was configured with html: true
+  unsafe = true
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'

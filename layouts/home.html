@@ -1,0 +1,51 @@
+{{ define "main" }}
+<div class="home">
+  <!-- Community Links -->
+  <section class="section">
+    <h2 class="section-title">Sveiki atvykę į Linux bendruomenę Lietuvoje!</h2>
+    <div class="community-grid">
+      {{- range hugo.Data.community }}
+      {{ partial "community-card.html" (dict "link" . "class" "community-card") }}
+      {{- end }}
+    </div>
+  </section>
+
+  <!-- News and Meetups in two columns -->
+  <div class="two-columns">
+    <!-- Latest News -->
+    <section class="column">
+      <h2 class="section-title">Naujienos:</h2>
+      <div class="news-list">
+        {{- range first 3 (where site.RegularPages "Section" "news").ByDate.Reverse }}
+        {{ partial "news-card.html" (dict "page" . "showAuthor" true) }}
+        {{- end }}
+      </div>
+      <div class="section-footer">
+        <a href="/news.html" class="btn btn-outline">Visos naujienos</a>
+      </div>
+    </section>
+
+    <!-- Upcoming Meetups: all meetups are rendered (oldest first); the 3 nearest
+         upcoming ones are shown. main.js re-evaluates this in the browser so the
+         list stays correct between builds. -->
+    <section class="column">
+      <h2 class="section-title">Artėjantys renginiai:</h2>
+      {{- $meetups := (where site.RegularPages "Section" "meetups").ByDate }}
+      {{- $visible := slice }}
+      {{- range $meetups }}
+        {{- if and (ge .Date.Unix now.Unix) (lt (len $visible) 3) }}{{ $visible = $visible | append .RelPermalink }}{{ end }}
+      {{- end }}
+      {{- $shown := len $visible }}
+      <div class="meetups-list" data-meetups-home{{ if not $shown }} hidden{{ end }}>
+        {{- range $meetups }}
+        {{ partial "meetup-card.html" (dict "page" . "showAuthor" true "hidden" (not (in $visible .RelPermalink))) }}
+        {{- end }}
+      </div>
+      <p class="no-meetups" data-meetups-empty{{ if $shown }} hidden{{ end }}>Šiuo metu nėra suplanuotų susitikimų. Sekite naujienas!</p>
+      <div class="section-footer">
+        <a href="/meetups.html" class="btn btn-outline">Visi renginiai</a>
+      </div>
+    </section>
+  </div>
+</div>
+{{ end }}

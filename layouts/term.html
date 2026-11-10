@@ -1,0 +1,35 @@
+{{ define "main" }}
+{{- $news := (where .Pages "Section" "news").ByDate.Reverse }}
+{{- $meetups := (where .Pages "Section" "meetups").ByDate.Reverse }}
+{{- $name := .Title }}
+{{- with $meetups }}{{ $name = (index . 0).Params.author }}{{ end }}
+{{- with $news }}{{ $name = (index . 0).Params.author }}{{ end }}
+<div class="author-view">
+  <header class="page-header">
+    <h1>{{ $name }}</h1>
+    <p class="page-description">Visi įrašai</p>
+  </header>
+
+  {{- with $news }}
+  <section class="section">
+    <h2 class="section-title">Naujienos</h2>
+    <div class="news-list">
+      {{- range . }}
+      {{ partial "news-card.html" (dict "page" .) }}
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+  {{- with $meetups }}
+  <section class="section">
+    <h2 class="section-title">Renginiai</h2>
+    <div class="meetups-list">
+      {{- range . }}
+      {{ partial "meetup-card.html" (dict "page" .) }}
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+</div>
+{{ end }}

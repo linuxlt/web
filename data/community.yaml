@@ -1,0 +1,15 @@
+- title: IRC
+  description: "Daug metų Aitvaro IRC tinkle gyvuojantis #Linux kanalas."
+  url: https://irc.linux.lt/
+  urlText: irc://irc.linux.lt/
+  icon: 💬
+- title: Matrix
+  description: Saugiems pokalbiams apie Linux skirta Matrix grupė.
+  url: https://matrix.to/#/#linuxusergroup:matrix.org
+  urlText: "#linuxusergroup:matrix.org"
+  icon: 🔗
+- title: Signal
+  description: Grupė kurioje daugiausiai bendrauja diegtuvių dalyviai.
+  url: https://signal.group/#CjQKIFhi0bOBCIwBVLEtbE1i0Rq4lF3fv8MC1-f6RmAjllqhEhB1POFrUgR1f4BNXD11RtX2
+  urlText: Signal grupė
+  icon: 📱

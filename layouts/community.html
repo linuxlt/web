@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div class="community-view">
+  <header class="page-header">
+    <h1>Bendruomenė</h1>
+    <p class="page-description">Aktyvios lietuviškos online grupės:</p>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">Kaip prisijungti?</h2>
+    <div class="community-grid">
+      {{- range hugo.Data.community }}
+      {{ partial "community-card.html" (dict "link" . "class" "community-card card") }}
+      {{- end }}
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Kitos nuorodos</h2>
+    <ul class="links-list">
+      <li>
+        <a href="http://sls.archlinux.lt/" target="_blank" rel="noopener">archlinux.lt</a> -
+        Arch Linux forumas lietuviškai
+      </li>
+      <li>
+        <a href="http://www.akl.lt/" target="_blank" rel="noopener">Atviras Kodas Lietuvai</a> -
+        Baltix-Ubuntu distribucija (atnaujinta 2025-08)
+      </li>
+      <li>
+        <a href="https://distrowatch.com/" target="_blank" rel="noopener">DistroWatch</a> -
+        Linux distribucijų naujienos ir palyginimas
+      </li>
+    </ul>
+  </section>
+</div>
+{{ end }}
