@@ -37,3 +37,6 @@ disableKinds = ["taxonomy"]
   # markdown-it was configured with html: true
   unsafe = true
 
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
