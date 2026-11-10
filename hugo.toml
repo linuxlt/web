@@ -13,8 +13,8 @@ buildFuture = true
 # Same output directory as the previous Vite build
 publishDir = "dist"
 
-# No /author.html index page and no 404 page (same as before)
-disableKinds = ["taxonomy", "404"]
+# No /author.html index page
+disableKinds = ["taxonomy"]
 
 [taxonomies]
   author = "author"
