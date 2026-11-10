@@ -1,6 +1,6 @@
 ---
 title: Linux ir atviro kodo bendruomenės susitikimas
-date: 2026-11-22
+date: 2026-11-22 14:00:00
 location: VU MIF 101 auditorija, Didlaukio 47, Vilnius
 author: Vaidas
 description: Kviečiame visus Linux ir atviro kodo naudotojus į bendruomenės susitikimą!
