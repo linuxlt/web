@@ -43,11 +43,11 @@ main() {
   # Create a local tools directory
   mkdir -p "${HOME}/.local"
 
-  # Install Dart Sass
-  echo "Installing Dart Sass ${DART_SASS_VERSION}..."
-  curl -sfL --output-dir "${build_temp_dir}" -O "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
-  tar -C "${HOME}/.local" -xf "${build_temp_dir}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
-  export PATH="${HOME}/.local/dart-sass:${PATH}"
+  # Install Dart Sass (not needed: the site uses plain CSS)
+  # echo "Installing Dart Sass ${DART_SASS_VERSION}..."
+  # curl -sfL --output-dir "${build_temp_dir}" -O "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
+  # tar -C "${HOME}/.local" -xf "${build_temp_dir}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
+  # export PATH="${HOME}/.local/dart-sass:${PATH}"
 
   # Install Go
   if [[ -f "go.mod" ]]; then
